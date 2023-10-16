@@ -8,14 +8,14 @@ pygame.init()
 
 screen = pygame.display.set_mode((400, 400))
 pygame.display.set_caption('Chomp!')
-screen.fill((0,150,255))
+screen.fill((114,159,255))
 
 pygame.draw.rect(screen, (100,25,0),(0,380,400,400))
 pygame.draw.rect(screen, (0, 200, 100), (0, 75, 74, 74))
 
 sand = pygame.image.load("assets/images/sand.png").convert()
 screen.blit(sand, (200, 200, 64, 64))
-pygame.display.flip()
+
 
 while True:
    for event in pygame.event.get():
@@ -25,6 +25,6 @@ while True:
          pygame.quit()
          sys.exit()
 
-
+      pygame.display.flip()
 
 
