@@ -23,6 +23,11 @@ seagrass.set_colorkey((0, 0, 0))
 
 my_fish = fish.Fish(200, 200) #create a new fish
 background = screen.copy()
+
+clock = pygame.time.Clock()
+
+
+
 def draw_background():
     background.fill(WATER_COLOR)
     # blit sand tiles across the bottom of the background
@@ -52,12 +57,26 @@ while True:
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                my_fish.move_left()
-                print("left arrow is pressed")
+                my_fish.moving_left =True
             if event.key == pygame.K_RIGHT:
-                my_fish.move_right()
-                print("right arrow is pressed")
+                my_fish.moving_right = True
+            if event.key == pygame.K_UP:
+                my_fish.moving_up = True
+            if event.key == pygame.K_DOWN:
+                my_fish.moving_down = True
+        elif event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT:
+                my_fish.moving_left = False
+            if event.key == pygame.K_RIGHT:
+                my_fish.moving_right = False
+            if event.key == pygame.K_UP:
+                my_fish.moving_up = False
+            if event.key == pygame.K_DOWN:
+                my_fish.moving_down = False
 
     screen.blit(background, (0,0))
+    my_fish.update()
     my_fish.draw(screen)
     pygame.display.flip()
+    clock.tick(60)
+
