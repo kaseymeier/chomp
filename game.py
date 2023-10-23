@@ -2,6 +2,7 @@ import pygame
 import sys
 import random
 import fish
+import minnow
 
 from Settings import *
 
@@ -10,7 +11,7 @@ pygame.init()
 game_font = pygame.font.Font("assets/fonts/MASQUE__.ttf", 128)
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption('Chomp!')
+#pygame.display.set_caption('Chomp!')
 
 
 sand = pygame.image.load("assets/images/sand.png").convert()
@@ -19,6 +20,11 @@ seagrass = pygame.image.load("assets/images/seagrass.png").convert()
 
 sand_top.set_colorkey((0, 0, 0))
 seagrass.set_colorkey((0, 0, 0))
+
+my_fish = fish.Fish(200, 200)
+my_minnows = []
+for _ in range(NUM_MINNOWS):
+    my_minnows.append(minnow.Minnow(random.randint(0, SCREEN_WIDTH - TILE_SIZE))), random.randint(0, WATER_BOTTOM - TILE_SIZE
 
 
 my_fish = fish.Fish(200, 200) #create a new fish
@@ -77,6 +83,9 @@ while True:
     screen.blit(background, (0,0))
     my_fish.update()
     my_fish.draw(screen)
+    for my_minnow in my_minnows:
+        my_minnow.draw
+    my_minnow = minnow.Minnow(100, 250)
     pygame.display.flip()
     clock.tick(60)
 
