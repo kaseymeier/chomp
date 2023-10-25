@@ -2,8 +2,9 @@ import pygame
 from Settings import *
 
 
-class Fish:
+class Fish(pygame.sprite.Sprite()):
     def __init__(self, x, y):
+        super().__init__()
         self.right_image = pygame.image.load("assets/images/fish.png").convert()
         self.right_image.set_colorkey((0, 0, 0))
         self.left_image = pygame.transform.flip(self.right_image, True, False)
@@ -40,3 +41,4 @@ class Fish:
     def draw(self, screen):
         screen.blit(self.image, self.rect)
 
+fish = pygame.sprite.Group()

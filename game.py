@@ -4,8 +4,8 @@ import random
 import fish
 import minnow
 from Settings import *
-
 from Settings import SCREEN_WIDTH
+from minnow import  Minnow, minnows
 
 pygame.init()
 
@@ -22,7 +22,7 @@ sand_top.set_colorkey((0, 0, 0))
 my_fish = fish.Fish(200, 200)  # create a new fish
 my_minnows = []
 for _ in range(NUM_MINNOWS):
-    my_minnows.append(minnow.Minnow(random.randint(0, SCREEN_WIDTH-TILE_SIZE),
+    my_minnows.add(minnow.Minnow(random.randint(0, SCREEN_WIDTH-TILE_SIZE),
                                     random.randint(0, WATER_BOTTOM-TILE_SIZE)))
 
 background = screen.copy()
@@ -76,14 +76,18 @@ while True:
 
     # update game objects
     my_fish.update()
-    for my_minnow in my_minnows:
-        my_minnow.update()
+    minnows.update()
+
+    chomped_minnows = pygame.sprite.spritecollide(my_fish, minnows, False)
+    score = +- len(chomped minnows)
+    if len(chomped_minnows) >0:
+        print(f"Chomped {len(chomped_minnows)} minnows")
+
 
     # draw the game screen
     screen.blit(background, (0, 0))
     my_fish.draw(screen)
-    for my_minnow in my_minnows:
-        my_minnow.draw(screen)
+
     pygame.display.flip()
     clock.tick(60)
 

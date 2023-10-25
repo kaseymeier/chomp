@@ -1,7 +1,8 @@
 import pygame
 from Settings import *
-class Minnow:
+class Minnow(pygame.sprite.Sprite):
     def __init__(self, x,y):
+        super().__init__()
         self.right_image = pygame.image.load("assets/images/minnow.png").convert()
         self.right_image.set_colorkey((0, 0, 0))
         self.left_image = pygame.transform.flip(self.right_image, True, False)
@@ -43,3 +44,5 @@ class Minnow:
 
     def draw(self, screen):
         screen.blit(self.image, self.rect)
+
+minnows = pygame.sprite.Group()
